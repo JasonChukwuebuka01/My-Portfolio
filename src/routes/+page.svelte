@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { fade, fly, scale, blur } from 'svelte/transition';
+	import { fly, scale, blur } from 'svelte/transition';
 	import { type Action } from 'svelte/action';
 	import Terminal from '$lib/components/Terminal.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
@@ -8,6 +8,7 @@
 	import TechStack from '$lib/components/TechStack.svelte';
 	import ScrollHud from '$lib/components/ScrollHud.svelte';
 	import ParticleSystem from '$lib/components/ParticleSystem.svelte';
+	import resume from '../lib/assets/resume.pdf';
 	import { projects } from '$lib/projects';
 
 	let isLoaded = false;
@@ -15,7 +16,7 @@
 		isLoaded = true;
 	});
 
-	const firstName = 'OBIANYOR';
+	const firstName = 'Jason';
 	const lastName = 'CHUKWUEBUKA';
 
 	interface DecipherParams {
@@ -121,7 +122,7 @@
 							<span
 								class="font-mono text-[10px] tracking-[0.4em] text-slate-500 uppercase dark:text-slate-400"
 							>
-								Uplink_Established // PH_NODE
+								Mayicodes
 							</span>
 						</div>
 
@@ -169,8 +170,9 @@
 									></div>
 								</a>
 								<a
-									href="/resume.pdf"
-									download
+									href={resume}
+									download="Obianyor_Chukwuebuka_Resume.pdf"
+									rel="external"
 									class="border border-slate-300 px-8 py-4 text-[10px] font-bold tracking-widest text-slate-900 uppercase transition-colors hover:border-amber-500 dark:border-slate-800 dark:text-white"
 								>
 									Resume

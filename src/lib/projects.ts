@@ -5,35 +5,35 @@ export interface Project {
   tags: string[];
   liveLink: string;
   githubLink: string;
-  image: string; 
+  image: string;
 }
 
 export const projects: Project[] = [
   {
     id: 1,
-    title: "Industrial Telemetry Dashboard",
-    description: "Real-time monitoring system for factory automation using WebSockets and high-frequency data streaming.",
-    tags: ["SvelteKit", "TypeScript", "D3.js"],
-    liveLink: "#",
-    githubLink: "#",
-    image: "/images/project1.jpg" 
+    title: "Crypto Analytic Dashboard",
+    description: "Real-time monitoring system for Cryptocurrency using WebSockets and high-frequency data streaming.",
+    tags: ["Vue", "TypeScript", "Chart.js"],
+    liveLink: "https://analytics-dashboard-zeta-three.vercel.app/",
+    githubLink: "https://github.com/JasonChukwuebuka01/analytics-dashboard",
+    image: "/projects/vortex.png"
   },
   {
     id: 2,
-    title: "Automated Billing Engine",
-    description: "A production-grade invoice generator with dynamic PDF rendering and automated tax calculations.",
-    tags: ["Node.js", "PostgreSQL", "Tailwind"],
-    liveLink: "#",
-    githubLink: "#",
-    image: "/images/project2.jpg"
+    title: "Invoice-Manager",
+    description: "A full-stack financial orchestration tool featuring a robust CRUD engine, automated status state machines, and real-time form validation. Engineered with a persistent data layer and global theme synchronization for seamless enterprise-grade invoice management.",
+    tags: ["React", "Typescript", "Tailwind"],
+    liveLink: "https://invoice-manager-mu.vercel.app/",
+    githubLink: "https://github.com/JasonChukwuebuka01/invoice",
+    image: "/projects/invoice-manager.png"
   },
   {
     id: 3,
-    title: "Logic Controller Interface",
-    description: "A web-based interface for interacting with hardware PLC modules via secure API gateways.",
-    tags: ["React", "Express", "MQTT"],
-    liveLink: "#",
-    githubLink: "#",
-    image: "/images/project3.jpg"
+    title: "DeSpeed-clone",
+    description: "A Decentralized web application built as an airdrop clone of an existing distribution platform",
+    tags: ["Next js", "Typescript", "Tailwind"],
+    liveLink: "https://myairdrop-dashboard.vercel.app/dashboard",
+    githubLink: "https://github.com/JasonChukwuebuka01/Airdrop-Dashboard",
+    image: "/projects/despeed.png"
   }
 ];
