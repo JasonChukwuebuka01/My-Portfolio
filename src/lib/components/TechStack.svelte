@@ -22,7 +22,6 @@
 		'HTML5',
 		'Node.js',
 		'Mongo DB',
-		'Prisma',
 		'Framer Motion',
 		'Vanilla-CSS'
 	];
