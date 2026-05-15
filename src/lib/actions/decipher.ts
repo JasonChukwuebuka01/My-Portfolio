@@ -8,19 +8,19 @@ interface DecipherParams {
 
 export const decipher: Action<HTMLElement, DecipherParams | undefined> = (node, params) => {
     const targetText = params?.text || node.innerText;
-    const duration = params?.duration || 1000;
+    // Lowered default duration for a snappier feel
+    const duration = params?.duration || 500; 
     const delay = params?.delay || 0;
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789<>_[]{}+=-*^?';
     
-    // We initialize intervalId as a let because it is cleared and reassigned inside startAnimation
     let intervalId: ReturnType<typeof setInterval>;
 
     const startAnimation = () => {
         let iteration = 0;
-        const totalIterations = targetText.length;
         
         clearInterval(intervalId);
         
+        // Faster interval (20ms instead of 30ms) for smoother, faster motion
         intervalId = setInterval(() => {
             node.innerText = targetText
                 .split("")
@@ -30,16 +30,16 @@ export const decipher: Action<HTMLElement, DecipherParams | undefined> = (node, 
                 })
                 .join("");
 
-            if (iteration >= totalIterations) {
+            if (iteration >= targetText.length) {
                 clearInterval(intervalId);
                 node.innerText = targetText;
             }
 
-            iteration += 1 / (duration / 100);
-        }, 30);
+            // Fixed math: This ensures it finishes exactly in the requested duration
+            iteration += targetText.length / (duration / 20);
+        }, 20);
     };
 
-    // We assign timeoutId directly to a const here to satisfy the linter
     const timeoutId = setTimeout(startAnimation, delay);
 
     return {
