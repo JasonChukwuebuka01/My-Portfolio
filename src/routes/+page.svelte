@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fly, scale, blur } from 'svelte/transition';
-	import { type Action } from 'svelte/action';
 	import Terminal from '$lib/components/Terminal.svelte';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import Contact from '$lib/components/Contact.svelte';
@@ -10,6 +9,7 @@
 	import ParticleSystem from '$lib/components/ParticleSystem.svelte';
 	import resume from '../lib/assets/resume.pdf';
 	import { projects } from '$lib/projects';
+	import { decipher } from '$lib/actions/decipher';
 
 	let isLoaded = false;
 	onMount(() => {
@@ -18,76 +18,6 @@
 
 	const firstName = 'Jason';
 	const lastName = 'CHUKWUEBUKA';
-
-	interface DecipherParams {
-		text: string;
-		duration?: number;
-		delay?: number;
-	}
-
-	const decipher: Action<HTMLElement, DecipherParams> = (node, params) => {
-		let { text, duration = 1200, delay = 0 } = params;
-		const chars = '!<>-_\\/[]{}—=+*^?#________';
-		let frame: number;
-		let startTime: number;
-		let observer: IntersectionObserver;
-
-		const update = (timestamp: number) => {
-			if (!startTime) startTime = timestamp;
-			const elapsed = timestamp - startTime;
-
-			if (elapsed < delay) {
-				frame = requestAnimationFrame(update);
-				return;
-			}
-
-			const progress = (elapsed - delay) / duration;
-
-			if (progress < 1) {
-				node.innerText = text
-					.split('')
-					.map((char: string, i: number): string => {
-						if (char === ' ') return ' ';
-						return i / text.length < progress
-							? char
-							: chars[Math.floor(Math.random() * chars.length)];
-					})
-					.join('');
-				frame = requestAnimationFrame(update);
-			} else {
-				node.innerText = text;
-			}
-		};
-
-		// Initialize Intersection Observer
-		observer = new IntersectionObserver(
-			(entries) => {
-				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						// Start the animation when in view
-						frame = requestAnimationFrame(update);
-						// Stop observing after it triggers once for performance
-						observer.unobserve(node);
-					}
-				});
-			},
-			{ threshold: 0.1 }
-		); // Trigger when 10% of the element is visible
-
-		observer.observe(node);
-
-		return {
-			update(newParams: DecipherParams) {
-				text = newParams.text;
-				duration = newParams.duration ?? 1200;
-				delay = newParams.delay ?? 0;
-			},
-			destroy: () => {
-				if (frame) cancelAnimationFrame(frame);
-				if (observer) observer.disconnect();
-			}
-		};
-	};
 </script>
 
 {#if isLoaded}
@@ -148,7 +78,8 @@
 								>
 								&&
 								<span class="text-slate-900 dark:text-white">Frontend Architect.</span>
-								Crafting industrial-grade digital experiences with precision and scalable logic.
+								Specializing in high-performance web systems and scalable UI architecture. I build industrial-grade
+								digital experiences with a focus on technical precision and robust, future-proof logic.
 							</p>
 						</div>
 
@@ -178,15 +109,17 @@
 									Resume
 								</a>
 							</div>
-							X
+
 							<div class="flex items-center gap-5 text-slate-400">
 								<a
-									href="#"
+									href="https://github.com/JasonChukwuebuka01"
+									target="_blank"
+									rel="noopener noreferrer"
 									class="font-mono text-[9px] tracking-widest uppercase transition-colors hover:text-amber-500"
 									>Github</a
 								>
 								<a
-									href="#"
+									href="https://www.linkedin.com/in/chukwuebuka-obianyor-4055b527a"
 									class="font-mono text-[9px] tracking-widest uppercase transition-colors hover:text-amber-500"
 									>LinkedIn</a
 								>
