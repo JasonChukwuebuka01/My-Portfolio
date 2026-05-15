@@ -1,6 +1,15 @@
 <script lang="ts">
 	import { type Action } from 'svelte/action';
-	export let decipher: Action<HTMLElement, any>;
+
+	// Define the parameters to match exactly what your decipher action uses
+	interface DecipherParams {
+		text?: string;
+		duration?: number;
+		delay?: number;
+	}
+
+	// Using DecipherParams | undefined ensures the action is type-safe
+	export let decipher: Action<HTMLElement, DecipherParams | undefined>;
 
 	const skills = [
 		'SvelteKit',
@@ -12,11 +21,10 @@
 		'TailwindCSS',
 		'HTML5',
 		'Node.js',
-		'PostgreSQL',
+		'Mongo DB',
 		'Prisma',
 		'Framer Motion',
-		'Zustand',
-		'Three.js'
+		'Vanilla-CSS'
 	];
 </script>
 
@@ -48,7 +56,7 @@
 			</div>
 
 			<div class="flex w-full flex-wrap justify-start gap-x-4 gap-y-6 lg:w-2/3 lg:justify-end">
-				{#each skills as skill, i}
+				{#each skills as skill, i (skill)}
 					<div class="group flex cursor-crosshair items-center">
 						<span
 							class="-translate-x-2 font-mono text-amber-500 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100"
