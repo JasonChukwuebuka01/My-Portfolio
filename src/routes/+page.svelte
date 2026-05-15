@@ -176,7 +176,7 @@
 									Resume
 								</a>
 							</div>
-
+							X
 							<div class="flex items-center gap-5 text-slate-400">
 								<a
 									href="#"
@@ -240,7 +240,7 @@
 
 					<div class="hidden md:block">
 						<a
-							href="https://github.com/yourusername"
+							href="https://github.com/JasonChukwuebuka01  "
 							target="_blank"
 							rel="noopener noreferrer"
 							class="group flex flex-col items-end gap-2 font-mono text-[10px] tracking-widest no-underline"
@@ -270,7 +270,7 @@
 				</div>
 
 				<div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-3">
-					{#each projects as project, i}
+					{#each projects as project, i (project.title)}
 						<div in:fly={{ y: 40, duration: 800, delay: i * 150 }} class="h-auto">
 							<ProjectCard {project} />
 						</div>
