@@ -59,7 +59,7 @@
 						<div class="space-y-4">
 							<h1
 								in:fly={{ y: 30, duration: 1000, delay: 200 }}
-								class="text-6xl leading-[0.85] font-black tracking-tighter text-slate-900 uppercase lg:text-8xl dark:text-white"
+								class="  text-5xl md:text-6xl leading-[0.85] font-black tracking-tighter text-slate-900 uppercase lg:text-8xl dark:text-white"
 							>
 								{firstName} <br />
 								<span
