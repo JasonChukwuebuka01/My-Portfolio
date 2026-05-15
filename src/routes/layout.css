@@ -5,6 +5,27 @@
   --obsidian: #020617;
 }
 
+
+
+
+@theme {
+  /* This tells Tailwind v4 to look for the .dark class on a parent element */
+  --color-background: white;
+  --color-text: black;
+}
+
+
+
+
+/* This is the v4 way to handle the dark mode selector */
+@variant dark (&:where(.dark, .dark *));
+
+
+
+/* Smooth transitions for the whole site */
+:root {
+  transition: background-color 0.8s ease, color 0.5s ease;
+}
 /* 1000% Design Polish: Smooth Scrolling & Selection */
 html {
   scroll-behavior: smooth;
